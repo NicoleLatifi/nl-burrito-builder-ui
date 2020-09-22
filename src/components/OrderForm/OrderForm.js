@@ -14,13 +14,17 @@ class OrderForm extends Component {
     this.setState({ name: e.target.value })
   }
 
-  handleIngredientChange = (e, prevState) => {
+  handleIngredientChange = (e) => {
     e.preventDefault();
-    console.log(e.target.id)
     this.setState({ ingredients: [...this.state.ingredients, e.target.name] })
   }
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
+    const isNameEntered = this.state.name
+    const isIngredientChosen = this.state.ingredients.length > 0
+    if (isNameEntered && isIngredientChosen) {
+      this.props.postSubmittedOrder(this.state.name, this.state.ingredients)
+    }
     this.clearInputs();
   }
 
