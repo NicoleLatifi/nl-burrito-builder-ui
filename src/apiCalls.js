@@ -23,11 +23,10 @@ export const postOrder = (name, ingredients) => {
 
 export const deleteOrder = (orderId) => {
   console.log( `delete ${orderId}`)
-  return fetch(`http://localhost:3001/api/v1/orders/${orderId}`), {
+  return fetch(`http://localhost:3001/api/v1/orders/${orderId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       }
-  }
-// /api/v1/orders/:order_id
+  })
 }
